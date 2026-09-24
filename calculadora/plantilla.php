@@ -1,17 +1,27 @@
 <?php
     require("function.php");
-    require("header.php");
+    
 ?>
 <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $numeros = [$_POST['num1'], $_POST['num2'], $_POST['num3'], $_POST['num4'], $_POST['num5']];
+        $numeros = [$_POST['uno'], $_POST['dos'], $_POST['tres'], $_POST['cuatro'], $_POST['cinco']];
         try{
-        validar($numeros);
+            validar($numeros);
         }
         catch(Exception $e){
-            echo "<p style='color:red;'>Error: " . $e->getMessage() . "</p>";
+            $campo = 1;
+            foreach($numeros as $valor){
+                if(!is_numeric($valor)){
+                    $campo = $i +1;
+                    break;
+                }
+                
+            }
+            header("Location: calculadora.php?error=1&" . http_build_query($_POST));
             exit;
         }
+        
+        require("header.php");
         switch ($_POST['action']) {
             case 'enviar':
                 echo "<p>Los números introducidos son: " . implode(", ", $numeros) . "</p>";
