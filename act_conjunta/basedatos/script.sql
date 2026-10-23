@@ -8,3 +8,14 @@ CREATE TABLE usuarios_token (
     token    VARCHAR(64),
     tiempo   DATETIME
 );
+
+-- Tabla del microservicio "historial": una fila por cada operacion hecha
+CREATE TABLE historial (
+    id         INT AUTO_INCREMENT PRIMARY KEY,
+    usuario    VARCHAR(50) NOT NULL,
+    operacion  VARCHAR(20) NOT NULL,  -- sumar, restar, multiplicar, dividir...
+    operacion1 DOUBLE NOT NULL,
+    operacion2 DOUBLE NOT NULL,
+    resultado  DOUBLE NOT NULL,
+    fecha      DATETIME NOT NULL
+);

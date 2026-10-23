@@ -28,6 +28,7 @@
             <button type="submit" name="accion" value="restar">Restar</button>
         </form>
 
+        <p class="salir"><a href="historial.php">Ver historial</a></p>
         <p class="salir"><a href="logout.php">Cerrar sesión</a></p>
     </div>
 </body>

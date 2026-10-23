@@ -38,6 +38,20 @@
     curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
     $respuestaCalculo = json_decode(curl_exec($ch2), true);
     curl_close($ch2);
+
+    // 3) Guardar la operacion en el microservicio de historial
+    $ch3 = curl_init('http://localhost/libro_servidor/cap3/subidos/act_conjunta/servidor/historial/guardar.php');
+    curl_setopt($ch3, CURLOPT_POST, true);
+    curl_setopt($ch3, CURLOPT_POSTFIELDS, http_build_query([
+        'usuario' => $_SESSION['usuario'],
+        'operacion' => $accion,
+        'operacion1' => $_POST['operacion1'] ?? 0,
+        'operacion2' => $_POST['operacion2'] ?? 0,
+        'resultado' => $respuestaCalculo['resultado']
+    ]));
+    curl_setopt($ch3, CURLOPT_RETURNTRANSFER, true);
+    curl_exec($ch3);
+    curl_close($ch3);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -51,6 +65,7 @@
         <h1>Resultado de <?php echo htmlspecialchars($accion); ?></h1>
         <p class="resultado"><?php echo htmlspecialchars($respuestaCalculo['resultado']); ?></p>
         <a href="calculadora.php">Volver a la calculadora</a>
+        <p class="salir"><a href="historial.php">Ver historial</a></p>
     </div>
 </body>
 </html>
