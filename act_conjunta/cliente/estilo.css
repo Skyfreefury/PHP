@@ -105,3 +105,17 @@ a:hover {
     font-size: 0.85em;
     font-weight: 400;
 }
+table.historial {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85em;
+}
+table.historial th,
+table.historial td {
+    text-align: left;
+    padding: 6px 4px;
+    border-bottom: 1px solid #d8dde3;
+}
+table.historial th {
+    color: #57606a;
+}
