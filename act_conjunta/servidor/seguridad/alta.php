@@ -22,8 +22,8 @@
         // "si el usuario ya existe... se gestiona la sesión creando un token único".
         $sql = $bd->prepare(
             'INSERT INTO usuarios_token (usuario, password, token, tiempo)
-             VALUES (:usuario, :password, :token, NOW())
-             ON DUPLICATE KEY UPDATE password = :password2, token = :token2, tiempo = NOW()'
+            VALUES (:usuario, :password, :token, NOW())
+            ON DUPLICATE KEY UPDATE password = :password2, token = :token2, tiempo = NOW()'
         );
         $sql->bindValue(':usuario', $usuario);
         $sql->bindValue(':password', $password);
