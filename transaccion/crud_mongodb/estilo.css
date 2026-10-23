@@ -1,0 +1,376 @@
+/* Estilo inspirado en la guía de interfaz de Apple (Human Interface Guidelines):
+   fuente del sistema, título grande, control segmentado, listas agrupadas
+   con esquinas redondeadas, colores del sistema y modo oscuro automático. */
+
+:root {
+    --fondo: #f2f2f7;            /* systemGroupedBackground */
+    --tarjeta: #ffffff;          /* secondarySystemGroupedBackground */
+    --texto: #000000;            /* label */
+    --texto-2: #3c3c4399;        /* secondaryLabel */
+    --texto-3: #3c3c434d;        /* tertiaryLabel */
+    --separador: #3c3c4329;      /* separator */
+    --relleno: #7676801f;        /* tertiarySystemFill */
+    --azul: #007aff;             /* systemBlue */
+    --rojo: #ff3b30;             /* systemRed */
+    --verde: #34c759;            /* systemGreen */
+    --segmento-activo: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fondo: #000000;
+        --tarjeta: #1c1c1e;
+        --texto: #ffffff;
+        --texto-2: #ebebf599;
+        --texto-3: #ebebf54d;
+        --separador: #54545899;
+        --relleno: #7676803d;
+        --azul: #0a84ff;
+        --rojo: #ff453a;
+        --verde: #30d158;
+        --segmento-activo: #636366;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 17px;               /* tamaño "Body" de Apple */
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+}
+
+.pagina {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 40px 16px 64px;
+}
+
+/* ---------- Título grande ("Large Title") ---------- */
+.subtitulo {
+    margin: 0 0 2px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--texto-2);
+}
+
+.titulo-grande {
+    margin: 0 0 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* ---------- Control segmentado (menú) ---------- */
+.segmentos {
+    display: flex;
+    padding: 2px;
+    margin-bottom: 24px;
+    border-radius: 9px;
+    background: var(--relleno);
+}
+
+.segmentos a {
+    flex: 1;
+    padding: 6px 8px;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--texto);
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.segmentos a.activo {
+    background: var(--segmento-activo);
+    font-weight: 600;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12), 0 3px 1px rgba(0, 0, 0, 0.04);
+}
+
+/* ---------- Avisos (resultado de cada acción) ---------- */
+.aviso {
+    margin-bottom: 20px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.aviso-ok {
+    background: color-mix(in srgb, var(--verde) 16%, transparent);
+    color: var(--texto);
+    border-left: 4px solid var(--verde);
+}
+
+.aviso-error {
+    background: color-mix(in srgb, var(--rojo) 14%, transparent);
+    color: var(--texto);
+    border-left: 4px solid var(--rojo);
+}
+
+/* ---------- Grupos ("Inset Grouped") ---------- */
+.grupo {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-radius: 12px;
+    background: var(--tarjeta);
+    overflow: hidden;
+}
+
+.nota-seccion {
+    margin: 8px 16px 20px;
+    font-size: 13px;
+    color: var(--texto-2);
+}
+
+.grupo + .nota-seccion {
+    margin-top: 8px;
+}
+
+.explicacion {
+    margin: 0 0 20px;
+    font-size: 15px;
+    color: var(--texto-2);
+}
+
+/* ---------- Filas del listado ---------- */
+.fila {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 60px;
+    padding: 10px 16px;
+    position: relative;
+}
+
+/* separador fino que empieza donde empieza el texto, como en iOS */
+.fila + .fila::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 16px;
+    right: 0;
+    height: 0.5px;
+    background: var(--separador);
+}
+
+.fila-texto {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.fila-titulo {
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.fila-detalle {
+    font-size: 15px;
+    color: var(--texto-2);
+}
+
+.fila-acciones {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.fila-acciones form {
+    margin: 0;
+}
+
+/* ---------- Campos de formulario ---------- */
+.campo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;              /* zona táctil mínima de Apple */
+    padding: 0 16px;
+    position: relative;
+}
+
+.campo + .campo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 16px;
+    right: 0;
+    height: 0.5px;
+    background: var(--separador);
+}
+
+.campo span {
+    width: 96px;
+    flex-shrink: 0;
+}
+
+.campo input {
+    flex: 1;
+    min-width: 0;
+    padding: 11px 0;
+    border: 0;
+    background: transparent;
+    color: var(--texto);
+    font: inherit;
+    text-align: right;
+    outline: none;
+}
+
+.campo input::placeholder {
+    color: var(--texto-3);
+}
+
+/* Sin recuadro azul al escribir: el foco ya se ve en la etiqueta, que se pone azul */
+.campo input:focus,
+.campo input:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Quita las flechas que el navegador pone en los campos numéricos */
+.campo input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.campo input[type="number"]::-webkit-inner-spin-button,
+.campo input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Stepper de Apple: una pastilla gris con − y + para subir o bajar el número */
+.stepper {
+    display: flex;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: var(--relleno);
+    overflow: hidden;
+}
+
+.stepper button {
+    width: 44px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--texto);
+    font: inherit;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.stepper button + button {
+    border-left: 0.5px solid var(--separador);
+}
+
+.stepper button:hover {
+    background: var(--relleno);
+}
+
+.stepper button:active {
+    opacity: 0.5;
+}
+
+/* Quita el fondo azul que pone Chrome al autocompletar */
+.campo input:-webkit-autofill,
+.campo input:-webkit-autofill:hover,
+.campo input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--texto);
+    box-shadow: 0 0 0 1000px var(--tarjeta) inset;
+    transition: background-color 9999s ease-out;
+}
+
+.campo:focus-within span {
+    color: var(--azul);
+}
+
+/* ---------- Botones ---------- */
+.boton {
+    display: inline-block;
+    padding: 14px 20px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--azul);
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+}
+
+.boton:hover {
+    opacity: 0.85;
+}
+
+.boton:active {
+    opacity: 0.6;
+}
+
+.boton-ancho {
+    display: block;
+    width: 100%;
+}
+
+.boton-texto {
+    padding: 6px 10px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--azul);
+    font: inherit;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.boton-texto:hover {
+    background: var(--relleno);
+}
+
+.boton-texto.peligro {
+    color: var(--rojo);
+}
+
+.volver {
+    display: inline-block;
+    margin: -8px 0 16px;
+    color: var(--azul);
+    text-decoration: none;
+}
+
+.vacio {
+    padding: 32px 16px;
+    text-align: center;
+    color: var(--texto-2);
+}
+
+.vacio p {
+    margin: 0 0 16px;
+}
+
+/* Foco visible con teclado */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--azul) 50%, transparent);
+    outline-offset: 2px;
+}
