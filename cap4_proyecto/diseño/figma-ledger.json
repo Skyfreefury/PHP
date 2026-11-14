@@ -1,0 +1,96 @@
+{
+  "fileKey": "i8b0qKvijrOBi3QosXFT5P",
+  "url": "https://www.figma.com/design/i8b0qKvijrOBi3QosXFT5P",
+  "sessionId": "38c701c7-1282-4bd3-950c-16f7fa3b1777",
+  "completedSteps": [
+    "foundations/variables",
+    "foundations/text-styles",
+    "pages",
+    "style-guide-sheet",
+    "components",
+    "screens-8.1-8.4",
+    "png-export"
+  ],
+  "styleGuideFrame": "2:2",
+  "collections": {
+    "Primitives": "VariableCollectionId:1:67",
+    "Color": "VariableCollectionId:1:84",
+    "Spacing": "VariableCollectionId:1:102"
+  },
+  "variables": {
+    "color/bg/canvas": "VariableID:1:85",
+    "color/bg/surface": "VariableID:1:86",
+    "color/bg/subtle": "VariableID:1:87",
+    "color/bg/inverse": "VariableID:1:88",
+    "color/bg/accent-soft": "VariableID:1:89",
+    "color/text/primary": "VariableID:1:90",
+    "color/text/secondary": "VariableID:1:91",
+    "color/text/muted": "VariableID:1:92",
+    "color/text/inverse": "VariableID:1:93",
+    "color/text/accent": "VariableID:1:94",
+    "color/border/default": "VariableID:1:95",
+    "color/border/strong": "VariableID:1:96",
+    "color/action/primary": "VariableID:1:97",
+    "color/action/primary-hover": "VariableID:1:98",
+    "color/action/neutral": "VariableID:1:99",
+    "color/feedback/success": "VariableID:1:100",
+    "color/feedback/error": "VariableID:1:101",
+    "spacing/4": "VariableID:1:103",
+    "spacing/8": "VariableID:1:104",
+    "spacing/12": "VariableID:1:105",
+    "spacing/16": "VariableID:1:106",
+    "spacing/24": "VariableID:1:107",
+    "spacing/32": "VariableID:1:108",
+    "spacing/48": "VariableID:1:109",
+    "spacing/64": "VariableID:1:110",
+    "spacing/80": "VariableID:1:111",
+    "spacing/120": "VariableID:1:112",
+    "radius/sm": "VariableID:1:113",
+    "radius/md": "VariableID:1:114",
+    "radius/lg": "VariableID:1:115",
+    "radius/full": "VariableID:1:116"
+  },
+  "textStyles": {
+    "Display/XL": "S:e86e05c35faf8f6a951e1c000afcf00de838e2d8,",
+    "Display/L": "S:648d916366b0cbd8b1261c459f5fbbfab1e1e46f,",
+    "Heading/H1": "S:9e760ad4ec13c6ef799d705efb0cac142a2d581a,",
+    "Heading/H2": "S:938369d6d4c23853ca7bd3cba1e555b6e06bce7b,",
+    "Heading/H3": "S:b4250b49e3da0b776bd2b48bf11aa32bff8c9dde,",
+    "Body/L": "S:bd510b782c617f58450e7ef4bfc281c5e05bd9a7,",
+    "Body/M": "S:8ebbf86506ebeac4ac70d948160972d4457bf62d,",
+    "Body/S": "S:0fe4fbaad0295afec6eb04aad8a42e08572c944e,",
+    "Label/M": "S:8c460a5eb608711f9f55e9d43e25d0ce6f806828,",
+    "Label/S": "S:8560035d949b8eb5883957c4bbd93c33477b63d3,",
+    "Price": "S:3a3f16242dfee2fa833b568e612915a2c1372f81,"
+  },
+  "pages": {
+    "Guía de estilo": "0:1",
+    "Componentes": "1:128",
+    "Pantallas · Escritorio": "1:129",
+    "Pantallas · Móvil": "1:130",
+    "Hero · Pizza 3D": "1:131"
+  },
+  "components": {
+    "Button": "3:14",
+    "Input": "3:28",
+    "Alert": "3:38",
+    "QtyStepper": "3:39",
+    "AppBar": "3:45"
+  },
+  "screens": {
+    "8.1": "5:165",
+    "8.2": "12:157",
+    "8.3": "5:59",
+    "8.3b": "5:137"
+  },
+  "icons": {
+    "bag": "10:2",
+    "check-circle-fill": "10:3",
+    "exclamation-circle-fill": "10:4",
+    "info-circle-fill": "10:5",
+    "box-arrow-right": "10:6",
+    "chevron-down": "10:7",
+    "plus-lg": "10:8",
+    "dash-lg": "10:9"
+  }
+}

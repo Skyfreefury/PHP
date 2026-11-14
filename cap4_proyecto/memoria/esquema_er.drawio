@@ -1,0 +1,61 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="Esquema E-R" name="Esquema E-R">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="cat" value="CATEGORIA" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontSize=14;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1"><mxGeometry x="220" y="150" width="140" height="60" as="geometry"/></mxCell>
+        <mxCell id="prod" value="PRODUCTO" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontSize=14;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1"><mxGeometry x="720" y="150" width="140" height="60" as="geometry"/></mxCell>
+        <mxCell id="ped" value="PEDIDO" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontSize=14;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1"><mxGeometry x="720" y="650" width="140" height="60" as="geometry"/></mxCell>
+        <mxCell id="cli" value="CLIENTE" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1;fontSize=14;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1"><mxGeometry x="220" y="650" width="140" height="60" as="geometry"/></mxCell>
+        <mxCell id="pert" value="Pertenece" style="rhombus;whiteSpace=wrap;html=1;fontSize=13;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1"><mxGeometry x="470" y="140" width="130" height="80" as="geometry"/></mxCell>
+        <mxCell id="inc" value="Incluye" style="rhombus;whiteSpace=wrap;html=1;fontSize=13;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1"><mxGeometry x="715" y="390" width="150" height="80" as="geometry"/></mxCell>
+        <mxCell id="rea" value="Realiza" style="rhombus;whiteSpace=wrap;html=1;fontSize=13;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1"><mxGeometry x="470" y="640" width="130" height="80" as="geometry"/></mxCell>
+        <mxCell id="a1" value="ID_Categoria" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fontStyle=4;" vertex="1" parent="1"><mxGeometry x="20" y="120" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="ea1" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="a1" target="cat"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a2" value="Nombre" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="20" y="170" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="ea2" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="a2" target="cat"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a3" value="Descripcion" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="20" y="220" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="ea3" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="a3" target="cat"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a4" value="ID_Producto" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fontStyle=4;" vertex="1" parent="1"><mxGeometry x="940" y="70" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="ea4" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="a4" target="prod"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a5" value="Nombre" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="940" y="120" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="ea5" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="a5" target="prod"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a6" value="Descripcion" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="940" y="170" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="ea6" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="a6" target="prod"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a7" value="Precio" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="940" y="220" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="ea7" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="a7" target="prod"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a8" value="Stock" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="940" y="270" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="ea8" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="a8" target="prod"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a9" value="Unidades" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="940" y="380" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="ea9" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="a9" target="inc"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a10" value="Precio" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="940" y="430" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="ea10" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="a10" target="inc"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a11" value="ID_Pedido" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fontStyle=4;" vertex="1" parent="1"><mxGeometry x="940" y="620" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="ea11" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="a11" target="ped"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a12" value="Fecha" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="940" y="670" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="ea12" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="a12" target="ped"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a13" value="Enviado" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="940" y="720" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="ea13" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="a13" target="ped"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a14" value="ID_Cliente" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;fontStyle=4;" vertex="1" parent="1"><mxGeometry x="20" y="570" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="ea14" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="a14" target="cli"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a15" value="Nombre" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="20" y="620" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="ea15" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="a15" target="cli"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a16" value="Correo" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="20" y="670" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="ea16" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="a16" target="cli"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a17" value="Clave" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="20" y="720" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="ea17" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="a17" target="cli"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a18" value="Direccion" style="ellipse;whiteSpace=wrap;html=1;fontSize=12;" vertex="1" parent="1"><mxGeometry x="20" y="770" width="130" height="40" as="geometry"/></mxCell>
+        <mxCell id="ea18" value="" style="endArrow=none;html=1;" edge="1" parent="1" source="a18" target="cli"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r1" value="1" style="endArrow=none;html=1;fontSize=14;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cat" target="pert"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r2" value="N" style="endArrow=none;html=1;fontSize=14;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="pert" target="prod"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r3" value="M" style="endArrow=none;html=1;fontSize=14;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="prod" target="inc"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r4" value="N" style="endArrow=none;html=1;fontSize=14;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="inc" target="ped"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r5" value="1" style="endArrow=none;html=1;fontSize=14;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="cli" target="rea"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="r6" value="N" style="endArrow=none;html=1;fontSize=14;fontStyle=1;labelBackgroundColor=#ffffff;" edge="1" parent="1" source="rea" target="ped"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="tit" value="Esquema entidad-relación · Pizzería" style="text;html=1;fontSize=18;fontStyle=1;align=left;" vertex="1" parent="1"><mxGeometry x="20" y="20" width="500" height="40" as="geometry"/></mxCell>
+        <mxCell id="ley" value="Atributo subrayado = clave primaria" style="text;html=1;fontSize=12;align=left;fontColor=#666666;" vertex="1" parent="1"><mxGeometry x="20" y="850" width="400" height="30" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
