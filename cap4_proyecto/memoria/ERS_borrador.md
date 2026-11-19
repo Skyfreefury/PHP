@@ -8,13 +8,13 @@ Definir de forma clara y comprobable los requisitos de Arrivederci, la tienda we
 
 ### 1.2 Alcance
 
-La aplicación permite a los clientes de la pizzería consultar el catálogo, llenar un carrito y realizar pedidos a domicilio. El catálogo tiene 3 categorías y 8 productos:
+La aplicación permite a los clientes de la pizzería consultar el catálogo, llenar un carrito y realizar pedidos a domicilio. El catálogo tiene 3 categorías con 8 productos cada una (24 en total):
 
 | Categoría | Productos |
 |---|---|
-| Pizzas | Margarita, Bacon, Peperoni y Jamón |
-| Bebidas | Coca-Cola y Agua |
-| Complementos | Patatas fritas y Aros de cebolla |
+| Pizzas | Margarita, Bacon, Peperoni, Jamón, Cuatro quesos, Barbacoa, Hawaiana y Vegetal |
+| Bebidas | Coca-Cola, Agua, Coca-Cola Zero, Fanta Naranja, Nestea, Agua con gas, Cerveza y Zumo de naranja |
+| Complementos | Patatas fritas, Aros de cebolla, Alitas de pollo, Pan de ajo, Nuggets, Ensalada César, Patatas gajo y Tequeños |
  Se usa desde el navegador, en ordenador y en móvil.
 
 ### 1.3 Actores

@@ -9,15 +9,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categorias</title>
+    <title>Arrivederci · Categorías</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-    <h2>Ciao <?= htmlspecialchars($_SESSION['nombre']) ?></h2>
-    <ul>
-        <?php foreach($categorias as $categoria): ?>
-            <li><a href="productos.php?categoria=<?= $categoria->getId() ?>"><?= htmlspecialchars($categoria->getNombre()) ?></a></li>
-        <?php endforeach; ?>
-        
-    </ul>
+    <header class="cabecera">
+        <a class="marca" href="categorias.php">Arrivederci</a>
+        <nav>
+            <span><?= htmlspecialchars($_SESSION['nombre']) ?></span>
+            <a href="logout.php">Cerrar sesión</a>
+        </nav>
+    </header>
+
+    <main class="contenido">
+        <p class="antetitulo">Ciao <?= htmlspecialchars($_SESSION['nombre']) ?></p>
+        <h1>¿Qué te apetece hoy?</h1>
+        <ul class="lista-categorias">
+            <?php foreach($categorias as $categoria): ?>
+                <li><a href="productos.php?categoria=<?= $categoria->getId() ?>"><?= htmlspecialchars($categoria->getNombre()) ?></a></li>
+            <?php endforeach; ?>
+        </ul>
+    </main>
 </body>
 </html>

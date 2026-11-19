@@ -1,0 +1,364 @@
+/* =====================================================
+   Arrivederci · Hoja de estilos única
+   Colores y tipos sacados de los prototipos de Figma (memoria/prototipo_8_*.png).
+   ===================================================== */
+
+:root {
+    --fondo: #f8f7f4;
+    --tinta: #141414;
+    --gris: #6b6b6b;
+    --borde: #d9d6d0;
+    --naranja: #ff5a00;
+    --naranja-oscuro: #c24400;
+    --naranja-suave: #fff1e8;
+    --verde: #2e7d32;
+    --error: #c62828;
+    --blanco: #ffffff;
+    --radio: 16px;
+    --serif: "Playfair Display", Georgia, serif;
+    --sans: "DM Sans", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: var(--sans);
+    color: var(--tinta);
+    background: var(--fondo);
+    line-height: 1.5;
+}
+
+h1, h2 { margin: 0; }
+
+a { color: inherit; }
+
+img { max-width: 100%; display: block; }
+
+.marca {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+/* ---------- Botones ---------- */
+
+.boton {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--naranja);
+    color: var(--blanco);
+    font: 500 1rem var(--sans);
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.boton:hover { background: var(--naranja-oscuro); }
+
+/* ---------- Avisos ---------- */
+
+.aviso {
+    margin: 0 0 1.25rem;
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    background: var(--naranja-suave);
+    font-size: 0.9rem;
+}
+
+.aviso-error { color: var(--error); }
+
+/* =====================================================
+   Inicio público (index.php) · RF-15
+   ===================================================== */
+
+.portada {
+    position: relative;
+    min-height: 100vh;
+    padding: 2rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #000 url("../img/hero.png") center / cover no-repeat;
+    color: var(--blanco);
+    overflow: hidden;
+}
+
+/* El vídeo es decoración: si no carga, queda la imagen de fondo (RNF-06). */
+.portada video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Oscurece la izquierda para que el texto se lea sobre la pizza. */
+.portada::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent 60%);
+}
+
+.portada > * { position: relative; z-index: 1; }
+
+.portada h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    line-height: 1.05;
+}
+
+.portada p { color: #d6d6d6; font-size: 1.1rem; }
+
+.portada footer p { font-size: 0.85rem; color: #9a9a9a; }
+
+/* =====================================================
+   Login (login.php) · prototipo 8.1
+   ===================================================== */
+
+.pagina-login {
+    min-height: 100vh;
+    margin: 0;
+    padding: 2rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr minmax(320px, 480px);
+    align-items: center;
+    gap: 3rem;
+    background:
+        linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent 45%),
+        #000 url("../img/hero.png") left center / cover no-repeat;
+    color: var(--blanco);
+}
+
+/* Marca arriba y lema abajo, como en el prototipo. */
+.pagina-login .lema {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pagina-login .lema h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.05;
+    margin-top: 1rem;
+}
+
+.pagina-login .lema p { color: #d6d6d6; }
+
+.tarjeta-login {
+    padding: 2.5rem;
+    border-radius: 24px;
+    background: var(--blanco);
+    color: var(--tinta);
+}
+
+.tarjeta-login h2 { font-size: 2rem; margin-bottom: 0.25rem; }
+
+.tarjeta-login .subtitulo { margin: 0 0 1.5rem; color: var(--gris); }
+
+.tarjeta-login label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+}
+
+.tarjeta-login input[type="email"],
+.tarjeta-login input[type="password"] {
+    width: 100%;
+    margin-bottom: 1.25rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    font: 1rem var(--sans);
+}
+
+.tarjeta-login input:focus {
+    outline: 2px solid var(--naranja);
+    outline-offset: 1px;
+    border-color: transparent;
+}
+
+.tarjeta-login .boton { width: 100%; margin-top: 0.5rem; }
+
+/* =====================================================
+   Cabecera de la tienda (categorias.php, productos.php)
+   ===================================================== */
+
+.cabecera {
+    width: calc(100% - 3rem);
+    max-width: 1232px;
+    margin: 1.25rem auto 0;
+    padding: 0.9rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    background: var(--blanco);
+}
+
+.cabecera .marca::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    background: var(--naranja);
+    vertical-align: middle;
+}
+
+.cabecera nav { display: flex; align-items: center; gap: 1.25rem; font-size: 0.95rem; }
+
+.cabecera nav a { text-decoration: none; color: var(--gris); }
+
+.cabecera nav a:hover { color: var(--tinta); }
+
+.contenido {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+}
+
+.antetitulo {
+    margin: 0 0 0.25rem;
+    color: var(--naranja-oscuro);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.contenido h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    margin-bottom: 2rem;
+}
+
+/* ---------- Categorías · RF-03 ---------- */
+
+.lista-categorias {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+.lista-categorias a {
+    display: block;
+    padding: 2rem;
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    background: var(--blanco);
+    font-family: var(--serif);
+    font-size: 1.75rem;
+    text-decoration: none;
+}
+
+.lista-categorias a:hover { border-color: var(--naranja); }
+
+/* ---------- Productos · RF-04 · prototipo 8.2 ---------- */
+
+.lista-productos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.producto {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    background: var(--blanco);
+}
+
+.producto:hover { border-color: var(--naranja); }
+
+.producto .foto {
+    width: 170px;
+    height: 170px;
+    object-fit: cover;
+    background: #000;
+}
+
+/* Hueco para los productos que aún no tienen foto. */
+.producto .sin-foto {
+    width: 170px;
+    height: 170px;
+    display: grid;
+    place-items: center;
+    background: #000;
+    color: var(--blanco);
+    font-family: var(--serif);
+    font-size: 3rem;
+}
+
+.producto .datos { padding: 1.25rem 1.75rem; }
+
+.producto h2 { font-size: 1.4rem; font-weight: 500; }
+
+.producto .descripcion { margin: 0.25rem 0 0.5rem; color: var(--gris); }
+
+.producto .precio { font-size: 1.25rem; font-weight: 500; margin-right: 1rem; }
+
+.producto .stock { font-size: 0.85rem; color: var(--gris); white-space: nowrap; }
+
+.producto .stock::before { content: "● "; color: var(--verde); font-size: 0.7rem; }
+
+/* =====================================================
+   Móvil
+   ===================================================== */
+
+/* Tableta: el login pasa a una columna, con la tarjeta centrada. */
+@media (max-width: 900px) {
+    .pagina-login {
+        grid-template-columns: 1fr;
+        align-content: start;
+        justify-items: center;
+        gap: 2rem;
+    }
+
+    .pagina-login .lema { justify-self: stretch; gap: 1.5rem; }
+
+    .tarjeta-login { width: 100%; max-width: 480px; }
+}
+
+@media (max-width: 760px) {
+    .portada, .pagina-login { padding: 1.5rem 1rem; }
+
+    /* En vertical el texto queda encima de la pizza: oscurecemos más. */
+    .portada::after {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 20%, rgba(0, 0, 0, 0.45));
+    }
+
+    .tarjeta-login { padding: 1.75rem 1.25rem; }
+
+    .producto .descripcion { font-size: 0.9rem; }
+
+    .producto .precio { display: block; font-size: 1.1rem; margin: 0; }
+
+    .cabecera { width: calc(100% - 2rem); margin: 1rem auto 0; border-radius: var(--radio); flex-wrap: wrap; }
+
+    .contenido { padding: 2rem 1rem 3rem; }
+
+    .producto { grid-template-columns: 100px 1fr; }
+
+    .producto .foto, .producto .sin-foto { width: 100px; height: 100px; font-size: 2rem; }
+
+    .producto .datos { padding: 0.9rem 1rem; }
+}

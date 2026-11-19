@@ -43,6 +43,10 @@ M_FONTINA = mat("Fontina", (0.95, 0.72, 0.30), 0.4, 0.0, 0.3)
 M_GORGO = mat("Gorgonzola", (0.82, 0.84, 0.74), 0.5, 0.0, 0.2)
 M_BACON = mat("Bacon", (0.30, 0.07, 0.04), 0.35, 0.4)
 M_JAMON = mat("Jamón cocido", (0.85, 0.42, 0.40), 0.4, 0.1, 0.25)
+M_PINA = mat("Piña", (0.95, 0.72, 0.12), 0.3, 0.3, 0.3)
+M_PIM_VERDE = mat("Pimiento verde", (0.05, 0.30, 0.03), 0.25, 0.5)
+M_PIM_ROJO = mat("Pimiento rojo", (0.55, 0.03, 0.01), 0.25, 0.5)
+M_CHAMPI = mat("Champiñón", (0.62, 0.50, 0.38), 0.55, 0.0, 0.1)
 
 added = []
 
@@ -150,6 +154,13 @@ VARIANTS = {
         chunks(16, 0.11, M_CHICKEN, 7), rings(9, 0.08, M_ONION, 8, minor=0.014)),
     "bacon": lambda: ([setattr(o, "hide_render", True) for o in basils], chunks(26, 0.085, M_BACON, 12)),
     "jamon": lambda: ([setattr(o, "hide_render", True) for o in basils], folds(6, 0.17, M_JAMON, 13)),
+    "hawaiana": lambda: (
+        [setattr(o, "hide_render", True) for o in basils],
+        folds(5, 0.15, M_JAMON, 21), chunks(14, 0.08, M_PINA, 22)),
+    "vegetal": lambda: (
+        [setattr(o, "hide_render", True) for o in basils],
+        rings(7, 0.07, M_PIM_VERDE, 31, minor=0.012), rings(6, 0.07, M_PIM_ROJO, 32, minor=0.012),
+        discs(9, 0.07, M_CHAMPI, 33, cup=False), rings(6, 0.08, M_ONION, 34, minor=0.012)),
     "diavola": lambda: (
         [setattr(o, "hide_render", True) for o in basils[2:]],
         discs(10, 0.12, M_SALAMI, 4, cup=False), rings(14, 0.028, M_CHILI, 6, minor=0.009)),

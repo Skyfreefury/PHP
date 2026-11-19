@@ -6,15 +6,15 @@ Reglas fijas para cualquier pantalla o prototipo del proyecto. La fuente de verd
 
 - Nombre: **Arrivederci** (así, con "d"). Tienda web de una pizzería.
 
-## Catálogo: exactamente 3 categorías y 8 productos
+## Catálogo: exactamente 3 categorías con 8 productos cada una (24)
 
 | Categoría | Productos |
 |---|---|
-| Pizzas | Margarita, Bacon, Peperoni, Jamón |
-| Bebidas | Coca-Cola, Agua |
-| Complementos | Patatas fritas, Aros de cebolla |
+| Pizzas | Margarita, Bacon, Peperoni, Jamón, Cuatro quesos, Barbacoa, Hawaiana, Vegetal |
+| Bebidas | Coca-Cola, Agua, Coca-Cola Zero, Fanta Naranja, Nestea, Agua con gas, Cerveza, Zumo de naranja |
+| Complementos | Patatas fritas, Aros de cebolla, Alitas de pollo, Pan de ajo, Nuggets, Ensalada César, Patatas gajo, Tequeños |
 
-- No añadir otros productos (nada de Cuatro quesos, Barbacoa, Diavola, Agua con gas…).
+- No añadir otros productos (nada de Diavola, Carbonara, Sprite…).
 - Cada producto muestra: nombre, descripción, precio y stock.
 - No inventar campos que no están en la base de datos (etiquetas "Vegetariana", "Más pedida", "Picante"…).
 
