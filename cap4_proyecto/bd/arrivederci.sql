@@ -59,9 +59,9 @@ CREATE TABLE IF NOT EXISTS pedido_producto (
 -- INSERT IGNORE + códigos fijos: si la fila ya existe, no se duplica.
 
 INSERT IGNORE INTO categoria (ID_Categoria, Nombre, Descripcion) VALUES
-    (1, 'Pizzas',       'Pizzas al horno de leña'),
-    (2, 'Bebidas',      'Refrescos y agua'),
-    (3, 'Complementos', 'Para acompañar la pizza');
+    (1, 'Pizzas',       'Al horno de leña, con masa de 48 horas'),
+    (2, 'Bebidas',      'Refrescos, agua, cerveza y zumo'),
+    (3, 'Complementos', 'Para picar mientras llega la pizza');
 
 INSERT IGNORE INTO producto (ID_Producto, Nombre, Descripcion, Precio, Stock, ID_Categoria) VALUES
     -- Pizzas (8)

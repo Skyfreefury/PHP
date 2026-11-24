@@ -82,7 +82,7 @@ cover = """<section class="portada">
 <div class="kicker">Especificación de requisitos software</div>
 <h1>Tienda web<br>de pizzería</h1>
 <p class="desc">Proyecto del capítulo 4 de Desarrollo web en entorno servidor: requisitos, casos de uso, reglas de negocio, modelo de datos, prototipos, pruebas de aceptación y trazabilidad.</p>
-<dl><div><dt>Versión</dt><dd>1.0</dd></div><div><dt>Fecha</dt><dd>6 nov 2026</dd></div><div><dt>Módulo</dt><dd>DWES · DAW</dd></div><div><dt>Tecnologías</dt><dd>PHP 8 · MySQL</dd></div></dl>
+<dl><div><dt>Versión</dt><dd>1.1</dd></div><div><dt>Fecha</dt><dd>24 nov 2026</dd></div><div><dt>Módulo</dt><dd>DWES · DAW</dd></div><div><dt>Tecnologías</dt><dd>PHP 8 · MySQL</dd></div></dl>
 </section>"""
 doc = f"""<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>ERS Arrivederci</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Playfair+Display:wght@400;600&display=block" rel="stylesheet">

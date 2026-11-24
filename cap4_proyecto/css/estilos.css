@@ -216,11 +216,51 @@ img { max-width: 100%; display: block; }
     vertical-align: middle;
 }
 
-.cabecera nav { display: flex; align-items: center; gap: 1.25rem; font-size: 0.95rem; }
+.cabecera nav { display: flex; align-items: center; flex-wrap: wrap; gap: 0.6rem; font-size: 0.95rem; }
 
-.cabecera nav a { text-decoration: none; color: var(--gris); }
+/* El nombre del cliente es texto: sin borde ni cursor de enlace. */
+.cabecera nav span { color: var(--gris); margin-right: 0.4rem; }
 
-.cabecera nav a:hover { color: var(--tinta); }
+/* Los enlaces de la cabecera parecen botones: borde, relleno y cambio al pasar el ratón. */
+.cabecera nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    color: var(--tinta);
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.cabecera nav a:hover { border-color: var(--tinta); background: var(--fondo); }
+
+.cabecera nav a:focus-visible { outline: 2px solid var(--naranja); outline-offset: 2px; }
+
+/* Flecha delante de «Volver a categorías». */
+.cabecera nav a[href="categorias.php"]::before { content: "←"; }
+
+/* Cerrar sesión: botón oscuro con el icono de salida. */
+.cabecera nav a[href="logout.php"] {
+    background: var(--tinta);
+    border-color: var(--tinta);
+    color: var(--blanco);
+}
+
+.cabecera nav a[href="logout.php"]:hover { background: var(--naranja); border-color: var(--naranja); }
+
+.cabecera nav a[href="logout.php"]::after {
+    content: "";
+    width: 16px;
+    height: 16px;
+    background: currentColor;
+    -webkit-mask: url("../img/iconos/box-arrow-right.svg") center / contain no-repeat;
+    mask: url("../img/iconos/box-arrow-right.svg") center / contain no-repeat;
+}
+
+/* La marca también es un enlace: se subraya al pasar el ratón. */
+.cabecera .marca:hover { text-decoration: underline; text-underline-offset: 4px; }
 
 .contenido {
     max-width: 1280px;
@@ -245,27 +285,90 @@ img { max-width: 100%; display: block; }
 
 /* ---------- Categorías · RF-03 ---------- */
 
+/* Una franja por categoría, una debajo de otra: texto a un lado y foto al otro. */
 .lista-categorias {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
 }
 
-.lista-categorias a {
-    display: block;
-    padding: 2rem;
-    border: 1px solid var(--borde);
-    border-radius: var(--radio);
-    background: var(--blanco);
-    font-family: var(--serif);
-    font-size: 1.75rem;
+.categoria {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 300px;
+    overflow: hidden;
+    border-radius: 24px;
+    background: #000;
+    color: var(--blanco);
     text-decoration: none;
 }
 
-.lista-categorias a:hover { border-color: var(--naranja); }
+.categoria img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+    transition: transform 0.4s ease;
+}
+
+/* Funde la foto con el fondo negro por el lado del texto. */
+.categoria::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, #000 55%, transparent 85%);
+    pointer-events: none;
+}
+
+.categoria .texto {
+    position: relative;
+    z-index: 1;
+    padding: 2rem 2.5rem;
+    max-width: 60%;
+}
+
+.categoria h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+.categoria p { margin: 0.5rem 0 1.25rem; color: #bdbdbd; }
+
+/* Parece un botón para que se vea que la franja entera se puede pulsar. */
+.categoria .ver {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.2rem;
+    border-radius: 999px;
+    background: var(--naranja);
+    font-weight: 500;
+    transition: gap 0.2s;
+}
+
+.categoria .ver::after { content: "→"; }
+
+.categoria:hover img { transform: scale(1.05); }
+
+.categoria:hover .ver { gap: 0.9rem; }
+
+.categoria:focus-visible { outline: 3px solid var(--naranja); outline-offset: 3px; }
+
+/* Foto a la izquierda en la franja del medio, para que no se vean las 3 iguales. */
+.lista-categorias li:nth-child(even) .categoria { justify-content: flex-end; }
+.lista-categorias li:nth-child(even) .categoria img { right: auto; left: 0; }
+.lista-categorias li:nth-child(even) .categoria::after {
+    background: linear-gradient(to left, #000 55%, transparent 85%);
+}
 
 /* ---------- Productos · RF-04 · prototipo 8.2 ---------- */
 
@@ -349,6 +452,17 @@ img { max-width: 100%; display: block; }
     .tarjeta-login { padding: 1.75rem 1.25rem; }
 
     .producto .descripcion { font-size: 0.9rem; }
+
+    /* Franjas de categoría: la foto ocupa todo el fondo y el texto va abajo. */
+    .categoria { min-height: 260px; align-items: flex-end; }
+    .categoria img,
+    .lista-categorias li:nth-child(even) .categoria img { width: 100%; left: 0; right: auto; }
+    .categoria::after,
+    .lista-categorias li:nth-child(even) .categoria::after {
+        background: linear-gradient(to top, #000 25%, transparent 80%);
+    }
+    .lista-categorias li:nth-child(even) .categoria { justify-content: flex-start; }
+    .categoria .texto { max-width: none; padding: 1.5rem; }
 
     .producto .precio { display: block; font-size: 1.1rem; margin: 0; }
 

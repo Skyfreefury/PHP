@@ -28,7 +28,16 @@
         <h1>¿Qué te apetece hoy?</h1>
         <ul class="lista-categorias">
             <?php foreach($categorias as $categoria): ?>
-                <li><a href="productos.php?categoria=<?= $categoria->getId() ?>"><?= htmlspecialchars($categoria->getNombre()) ?></a></li>
+                <li>
+                    <a class="categoria" href="productos.php?categoria=<?= $categoria->getId() ?>">
+                        <div class="texto">
+                            <h2><?= htmlspecialchars($categoria->getNombre()) ?></h2>
+                            <p><?= htmlspecialchars($categoria->getDescripcion()) ?></p>
+                            <span class="ver">Ver la carta</span>
+                        </div>
+                        <img src="img/categorias/<?= $categoria->getId() ?>.png" alt="">
+                    </a>
+                </li>
             <?php endforeach; ?>
         </ul>
     </main>
