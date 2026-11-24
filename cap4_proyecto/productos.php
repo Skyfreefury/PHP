@@ -45,6 +45,12 @@
                         <p class="descripcion"><?= htmlspecialchars($producto->getDescripcion()) ?></p>
                         <span class="precio"><?= number_format($producto->getPrecio(), 2, ',', '.') ?> €</span>
                         <span class="stock"><?= $producto->getStock() ?> disponibles</span>
+                        <form action="agregar-carrito.php" method="post">
+                            <input type="hidden" name="id" value="<?= $producto->getId() ?>">
+                            <input type="number" name="unidades" min="1" max="10" value="1" required>
+                            <button type="submit">Agregar al carrito</button>
+                            <input type="hidden" name="categoria" value="<?= htmlspecialchars($idCategoria) ?>">
+                        </form>
                     </div>
                 </li>
             <?php endforeach; ?>
