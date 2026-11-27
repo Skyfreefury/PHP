@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Arrivederci · Cómo lo hicimos</title>
+<base href="file:///D:/Escuela/FP%20DAW/PHP/cap4_proyecto/memoria/">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 18mm 18mm 20mm; }
+:root { --naranja:#ff5a00; --tinta:#141414; --gris:#5f5f5f; --borde:#e2ded7; --suave:#fff1e8; --fondo:#f8f7f4; }
+* { box-sizing: border-box; }
+body { margin:0; font: 10.5pt/1.55 "DM Sans", system-ui, sans-serif; color: var(--tinta); }
+h1, h2, h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 500; margin: 0; }
+h2 { font-size: 20pt; margin: 0 0 10px; padding-bottom: 6px; border-bottom: 2px solid var(--naranja); break-after: avoid; }
+h3 { font-size: 13pt; margin: 16px 0 4px; break-after: avoid; }
+p { margin: 0 0 8px; }
+section { margin-bottom: 22px; }
+.salto { break-before: page; }
+code { font-family: Consolas, monospace; font-size: 9.5pt; background: var(--fondo); padding: 1px 5px; border-radius: 4px; }
+ul, ol { margin: 4px 0 10px; padding-left: 20px; }
+li { margin-bottom: 3px; }
+table { width: 100%; border-collapse: collapse; margin: 6px 0 12px; font-size: 9.5pt; break-inside: avoid; }
+th { text-align: left; font-size: 8pt; letter-spacing: .06em; text-transform: uppercase; color: var(--gris); background: var(--fondo); }
+th, td { padding: 6px 9px; border-bottom: 1px solid var(--borde); vertical-align: top; }
+.portada { height: 255mm; display: flex; flex-direction: column; justify-content: space-between; padding: 10mm 0; }
+.portada .ante { color: var(--naranja); font-size: 10pt; letter-spacing: .12em; text-transform: uppercase; }
+.portada h1 { font-size: 46pt; line-height: 1.05; margin: 10px 0 14px; }
+.portada .sub { font-size: 14pt; color: var(--gris); max-width: 130mm; }
+.portada img { border-radius: 14px; margin-top: 14mm; }
+.portada .pie { font-size: 9.5pt; color: var(--gris); border-top: 1px solid var(--borde); padding-top: 8px; }
+.caja { background: var(--suave); border-radius: 10px; padding: 10px 14px; margin: 8px 0 12px; break-inside: avoid; }
+.caja strong { color: #b13e00; }
+.paso { display: grid; grid-template-columns: 26px 1fr; gap: 10px; margin-bottom: 9px; break-inside: avoid; }
+.paso .n { width: 26px; height: 26px; border-radius: 50%; background: var(--naranja); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: 10pt; }
+.paso h3 { margin: 2px 0 2px; }
+figure { margin: 8px 0 14px; break-inside: avoid; }
+figure img { width: 100%; border: 1px solid var(--borde); border-radius: 8px; }
+figcaption { font-size: 9pt; color: var(--gris); margin-top: 4px; }
+.dos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+pre { font: 9pt/1.5 Consolas, monospace; background: var(--tinta); color: #f3f3f3; padding: 10px 12px; border-radius: 8px; margin: 6px 0 12px; white-space: pre-wrap; break-inside: avoid; }
+.ok { color: #2e7d32; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <div>
+    <p class="ante">Proyecto del capítulo 4 · PHP y MySQL</p>
+    <h1>Arrivederci.<br>Cómo lo hicimos.</h1>
+    <p class="sub">Una tienda online de pizzería en PHP: entrar, elegir productos, llenar el carrito y hacer el pedido. Aquí se explica, paso a paso y sin tecnicismos de más, cómo se construyó.</p>
+    <img src="capturas/1_portada.png" alt="">
+  </div>
+  <p class="pie">DAW · Desarrollo web en entorno servidor · 27 de noviembre de 2026</p>
+</div>
+
+<section class="salto">
+  <h2>1. Qué es Arrivederci</h2>
+  <p>Arrivederci es la web de una pizzería. Un cliente registrado entra con su correo y su clave, mira la carta, mete productos en el carrito y hace el pedido. El pedido se guarda en la base de datos como «no enviado», listo para que la cocina lo prepare.</p>
+  <table>
+    <tr><th>Dato</th><th>Valor</th></tr>
+    <tr><td>Categorías</td><td>3: Pizzas, Bebidas y Complementos</td></tr>
+    <tr><td>Productos</td><td>24, 8 en cada categoría, cada uno con su foto</td></tr>
+    <tr><td>Máximo por producto</td><td>10 unidades en el carrito</td></tr>
+    <tr><td>Sesión</td><td>Se cierra sola tras 15 minutos sin actividad</td></tr>
+    <tr><td>Usuario de prueba</td><td><code>cliente@pizzeria.es</code> con la clave <code>1234</code></td></tr>
+  </table>
+
+  <h3>Lo que pedía el enunciado y dónde está</h3>
+  <table>
+    <tr><th>Requisito</th><th>Cómo lo cumple</th></tr>
+    <tr><td>Programación orientada a objetos</td><td>7 clases en la carpeta <code>clases/</code>: BD, Cliente, Sesion, Categoria, Producto, Carrito y Pedido.</td></tr>
+    <tr><td>Base de datos MySQL</td><td>Base <code>arrivederci</code> con 5 tablas, creada con <code>bd/arrivederci.sql</code>.</td></tr>
+    <tr><td>Variables de sesión</td><td>Guardan quién ha entrado, su nombre, el carrito y la hora de la última actividad.</td></tr>
+    <tr><td>Cookies</td><td>La cookie <code>correo</code> recuerda el correo del login durante 30 días.</td></tr>
+    <tr><td>3 categorías con 8 productos</td><td>24 productos cargados en la tabla <code>producto</code>.</td></tr>
+    <tr><td>ERS y prototipos</td><td><code>memoria/ERS_Arrivederci.pdf</code> con los prototipos de Figma.</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>2. Herramientas</h2>
+  <table>
+    <tr><th>Herramienta</th><th>Para qué</th></tr>
+    <tr><td>XAMPP (PHP 8.2 y MySQL)</td><td>Ejecutar PHP y guardar los datos. MySQL escucha en el puerto 3307.</td></tr>
+    <tr><td>Visual Studio Code</td><td>Escribir el código.</td></tr>
+    <tr><td>Figma</td><td>Dibujar los prototipos de las pantallas antes de programar.</td></tr>
+    <tr><td>draw.io</td><td>Dibujar el esquema entidad-relación y el modelo relacional.</td></tr>
+    <tr><td>Blender</td><td>Hacer las 24 fotos de producto en 3D y el vídeo de la portada.</td></tr>
+    <tr><td>Git y GitHub</td><td>Guardar cada avance del proyecto con un commit.</td></tr>
+  </table>
+</section>
+
+<section class="salto">
+  <h2>3. Los pasos que seguimos</h2>
+
+  <div class="paso"><div class="n">1</div><div>
+    <h3>Analizar y escribir el ERS</h3>
+    <p>Antes de programar, se escribió qué debe hacer la web: 15 requisitos funcionales (RF), 6 no funcionales (RNF), 3 casos de uso y 5 reglas de negocio. Por ejemplo, RF-05 dice «agregar productos al carrito» y RN-01 dice «de 1 a 10 unidades».</p>
+  </div></div>
+
+  <div class="paso"><div class="n">2</div><div>
+    <h3>Diseñar la base de datos</h3>
+    <p>Del análisis salen 5 tablas: <code>categoria</code>, <code>producto</code>, <code>cliente</code>, <code>pedido</code> y <code>pedido_producto</code>. La última une cada pedido con sus productos y guarda el precio del momento, así un pedido antiguo no cambia si sube un precio.</p>
+  </div></div>
+
+  <div class="paso"><div class="n">3</div><div>
+    <h3>Dibujar los prototipos</h3>
+    <p>En Figma se dibujaron el login, la lista de productos, el carrito y la confirmación. Con eso claro, el HTML y el CSS se escriben sin dudar dónde va cada cosa.</p>
+  </div></div>
+
+  <div class="paso"><div class="n">4</div><div>
+    <h3>Conectar con la base de datos</h3>
+    <p>La clase <code>BD</code> abre una sola conexión PDO por petición y la reutiliza. Todas las consultas usan <code>prepare</code> con parámetros, para que nadie pueda colar SQL desde un formulario.</p>
+  </div></div>
+
+  <div class="paso"><div class="n">5</div><div>
+    <h3>Login y sesión</h3>
+    <p><code>login.php</code> llama a <code>Cliente::comprobar()</code>, que busca el cliente por correo y comprueba la clave con <code>password_verify</code>, porque en la base la clave está cifrada. Si es correcta, guarda los datos en la sesión. La clase <code>Sesion</code> se llama al principio de cada página privada: si nadie ha entrado o han pasado 15 minutos, manda al login.</p>
+  </div></div>
+
+  <div class="paso"><div class="n">6</div><div>
+    <h3>Catálogo</h3>
+    <p><code>categorias.php</code> pinta las 3 categorías con <code>Categoria::todas()</code>. Al pulsar una, <code>productos.php</code> muestra sus 8 productos con <code>Producto::porCategoria()</code>. Todo texto de la base sale con <code>htmlspecialchars</code> para evitar código inyectado.</p>
+  </div></div>
+
+  <div class="paso"><div class="n">7</div><div>
+    <h3>Carrito</h3>
+    <p>El carrito vive en la sesión como una lista <code>id del producto → unidades</code>. La clase <code>Carrito</code> tiene 3 métodos: <code>agregar</code> suma unidades con un tope de 10, <code>cambiar</code> pone una cantidad nueva y <code>eliminar</code> quita la línea. <code>carrito.php</code> calcula subtotales y total.</p>
+  </div></div>
+
+  <div class="paso"><div class="n">8</div><div>
+    <h3>Pedido con transacción</h3>
+    <p><code>Pedido::crear()</code> guarda la cabecera del pedido y todas sus líneas dentro de una transacción. Si falla una sola línea, se deshace todo con <code>rollBack</code> y no queda un pedido a medias. Después se vacía el carrito y se muestra la confirmación con el número de pedido.</p>
+  </div></div>
+
+  <div class="paso"><div class="n">9</div><div>
+    <h3>Historial</h3>
+    <p><code>historial.php</code> lista los pedidos del cliente con fecha, artículos, total y estado. El total se calcula en SQL con <code>SUM(Unidades * Precio)</code>.</p>
+  </div></div>
+
+  <div class="paso"><div class="n">10</div><div>
+    <h3>Diseño y pruebas</h3>
+    <p>Una sola hoja <code>css/estilos.css</code> da estilo a todas las páginas y las adapta al móvil. Al final se pasaron las 5 pruebas de aceptación del ERS.</p>
+  </div></div>
+</section>
+
+<section class="salto">
+  <h2>4. Cómo están organizados los archivos</h2>
+  <pre>cap4_proyecto/
+├── index.php              portada pública
+├── login.php              formulario de entrada
+├── logout.php             cierra la sesión
+├── categorias.php         las 3 categorías
+├── productos.php          productos de una categoría
+├── agregar-carrito.php    recibe el formulario "Agregar al carrito"
+├── carrito.php            ver el carrito
+├── actualizar-carrito.php cambiar unidades o eliminar una línea
+├── realizar-pedido.php    guarda el pedido
+├── confirmacion.php       "¡Pedido recibido!"
+├── historial.php          mis pedidos
+├── clases/                BD, Cliente, Sesion, Categoria, Producto, Carrito, Pedido
+├── css/estilos.css        todo el diseño
+├── img/                   fotos de productos y categorías
+├── bd/arrivederci.sql     crea la base y mete los datos
+└── memoria/               ERS, esquemas y prototipos</pre>
+
+  <div class="caja">Las páginas que <strong>muestran</strong> algo (<code>carrito.php</code>, <code>productos.php</code>…) están separadas de las que solo <strong>hacen</strong> algo y redirigen (<code>agregar-carrito.php</code>, <code>realizar-pedido.php</code>…). Así, recargar la página nunca repite un pedido.</div>
+</section>
+
+<section>
+  <h2>5. Recorrido por la web</h2>
+  <div class="dos">
+    <figure><img src="capturas/2_login.png" alt=""><figcaption>Login. Si la clave falla, avisa y deja el correo escrito.</figcaption></figure>
+    <figure><img src="capturas/3_categorias.png" alt=""><figcaption>Las 3 categorías, cada una con su foto.</figcaption></figure>
+    <figure><img src="capturas/4_productos.png" alt=""><figcaption>Productos con precio, stock y unidades a agregar.</figcaption></figure>
+    <figure><img src="capturas/5_carrito.png" alt=""><figcaption>Carrito: cambiar, eliminar y realizar el pedido.</figcaption></figure>
+    <figure><img src="capturas/6_confirmacion.png" alt=""><figcaption>Confirmación con el número de pedido.</figcaption></figure>
+    <figure><img src="capturas/7_historial.png" alt=""><figcaption>Historial con fecha, total y estado.</figcaption></figure>
+  </div>
+</section>
+
+<section class="salto">
+  <h2>6. Cómo ponerlo en marcha</h2>
+  <ol>
+    <li>Arrancar MySQL desde el panel de XAMPP.</li>
+    <li>Importar <code>bd/arrivederci.sql</code> en phpMyAdmin (pestaña Importar). Crea la base, las tablas, los 24 productos y el cliente de prueba.</li>
+    <li>Revisar <code>clases/BD.php</code>. Está preparado para MySQL en el puerto <code>3307</code> con usuario <code>root</code> y clave <code>root</code>. Si tu MySQL usa otro puerto o clave, se cambia en esas 3 constantes.</li>
+    <li>Abrir una terminal en la carpeta que contiene <code>cap4_proyecto</code> y arrancar el servidor de PHP:</li>
+  </ol>
+  <pre>php -S localhost:8001 -t cap4_proyecto</pre>
+  <ol start="5">
+    <li>Abrir en el navegador <code>http://localhost:8001</code> y entrar con <code>cliente@pizzeria.es</code> / <code>1234</code>.</li>
+  </ol>
+  <div class="caja">También funciona con Apache de XAMPP: se copia la carpeta <code>cap4_proyecto</code> dentro de <code>htdocs</code> y se abre <code>http://localhost/cap4_proyecto/</code>.</div>
+
+  <h2 style="margin-top:22px">7. Pruebas</h2>
+  <table>
+    <tr><th>Prueba</th><th>Qué se hizo</th><th>Resultado</th></tr>
+    <tr><td>CP-01</td><td>Entrar con una clave equivocada.</td><td><span class="ok">Superada.</span> Avisa y mantiene el correo.</td></tr>
+    <tr><td>CP-02</td><td>Abrir productos sin haber entrado.</td><td><span class="ok">Superada.</span> Lleva al login.</td></tr>
+    <tr><td>CP-03</td><td>Agregar 11 pizzas iguales.</td><td><span class="ok">Superada.</span> El máximo es 10 y no se guarda nada.</td></tr>
+    <tr><td>CP-04</td><td>Pedir 2 Margaritas y 1 Coca-Cola.</td><td><span class="ok">Superada.</span> 1 pedido no enviado con sus 2 líneas.</td></tr>
+    <tr><td>CP-05</td><td>Dejar la sesión 15 minutos quieta.</td><td><span class="ok">Superada.</span> Vuelve al login.</td></tr>
+  </table>
+</section>
+
+</body>
+</html>
