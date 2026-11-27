@@ -45,5 +45,15 @@ class Producto {
         }
         return $productos;
     }
+    public static function porId($idProducto) {
+        $bd = BD::conectar();
+        $stmt = $bd->prepare("SELECT * FROM producto WHERE ID_Producto = :id");
+        $stmt->execute(['id' => $idProducto]);
+        $fila = $stmt->fetch();
+        if ($fila) {
+            return new Producto($fila["ID_Producto"], $fila["Nombre"], $fila["Descripcion"], $fila["Precio"], $fila["Stock"]);
+        }
+        return null;
+    }
 }
 ?>

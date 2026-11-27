@@ -192,15 +192,15 @@ Las relaciones 1:N pasan la clave primaria del lado 1 como clave ajena al lado N
 
 ## 9. Pruebas de aceptación
 
-Las pruebas se escriben ahora y se harán a mano en el navegador cuando la aplicación esté lista.
+Las pruebas se hicieron el 27 de noviembre de 2026 en local (PHP 8.2 y MySQL de XAMPP), en el navegador y con peticiones curl. Todas dan el resultado esperado.
 
 | Prueba | Requisito | Qué se hace | Qué debe pasar | Estado |
 |---|---|---|---|---|
-| CP-01 | RF-01 | Entrar con una clave equivocada. | Sale un aviso de error y el correo sigue escrito. | Pendiente |
-| CP-02 | RNF-04 | Abrir la página de productos sin haber entrado. | La web te devuelve al login. | Pendiente |
-| CP-03 | RF-05 / RN-01 | Añadir 11 pizzas iguales al carrito. | Sale un aviso y el carrito no cambia. | Pendiente |
-| CP-04 | RF-10 / RNF-05 | Pedir 2 Margaritas y 1 Coca-Cola. | En la base aparece 1 pedido nuevo, sin enviar, con sus 2 líneas. | Pendiente |
-| CP-05 | RF-13 | Entrar y no tocar nada durante 15 minutos. | Al pulsar cualquier enlace, la web te devuelve al login. | Pendiente |
+| CP-01 | RF-01 | Entrar con una clave equivocada. | Sale un aviso de error y el correo sigue escrito. | Superada. Sale «Revise usuario y contraseña.» con el correo relleno. |
+| CP-02 | RNF-04 | Abrir la página de productos sin haber entrado. | La web te devuelve al login. | Superada. Redirige a login.php?redirigido=1. |
+| CP-03 | RF-05 / RN-01 | Agregar 11 pizzas iguales al carrito. | Sale un aviso y el carrito no cambia. | Superada. El navegador avisa de que el máximo es 10. Si se fuerza el envío, el servidor no guarda nada. |
+| CP-04 | RF-10 / RNF-05 | Pedir 2 Margaritas y 1 Coca-Cola. | En la base aparece 1 pedido nuevo, sin enviar, con sus 2 líneas. | Superada. Pedido 3 con Enviado = 0 y 2 líneas: 2 × 9,50 € y 1 × 2,00 €. |
+| CP-05 | RF-13 | Entrar y no tocar nada durante 15 minutos. | Al pulsar cualquier enlace, la web te devuelve al login. | Superada. Con la última actividad atrasada 16 minutos, redirige al login. |
 
 ## 10. Matriz de trazabilidad
 

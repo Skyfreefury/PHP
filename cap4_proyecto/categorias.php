@@ -19,6 +19,8 @@
         <a class="marca" href="categorias.php">Arrivederci</a>
         <nav>
             <span><?= htmlspecialchars($_SESSION['nombre']) ?></span>
+            <a href="carrito.php">Ver carrito</a>
+            <a href="historial.php">Mis pedidos</a>
             <a href="logout.php">Cerrar sesión</a>
         </nav>
     </header>

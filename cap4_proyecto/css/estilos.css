@@ -423,6 +423,169 @@ img { max-width: 100%; display: block; }
 
 .producto .stock::before { content: "● "; color: var(--verde); font-size: 0.7rem; }
 
+/* Formulario "Agregar al carrito" de cada producto · RF-05 */
+.producto form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+}
+
+/* Campo de unidades compartido por productos y carrito. */
+.producto input[type="number"],
+.linea-carrito input[type="number"] {
+    width: 4.2rem;
+    padding: 0.5rem 0.6rem;
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    background: var(--fondo);
+    font: 500 0.95rem var(--sans);
+    text-align: center;
+}
+
+.producto input[type="number"]:focus,
+.linea-carrito input[type="number"]:focus { outline: 2px solid var(--naranja); outline-offset: 1px; }
+
+.producto form button {
+    padding: 0.55rem 1.2rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--naranja);
+    color: var(--blanco);
+    font: 500 0.95rem var(--sans);
+    cursor: pointer;
+}
+
+.producto form button:hover { background: var(--naranja-oscuro); }
+
+/* ---------- Carrito · RF-06 a RF-09 ---------- */
+
+.lista-carrito {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    background: var(--blanco);
+    overflow: hidden;
+}
+
+/* Una fila: nombre | unidades x precio | subtotal | formulario. */
+.linea-carrito {
+    display: grid;
+    grid-template-columns: 1fr auto 6.5rem auto;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1rem 1.5rem;
+}
+
+.linea-carrito + .linea-carrito { border-top: 1px solid var(--borde); }
+
+.linea-carrito .nombre { font-family: var(--serif); font-size: 1.2rem; }
+
+.linea-carrito .unidades { color: var(--gris); white-space: nowrap; }
+
+.linea-carrito .subtotal { font-weight: 500; text-align: right; white-space: nowrap; }
+
+.linea-carrito .editar { display: flex; align-items: center; gap: 0.4rem; }
+
+.linea-carrito .editar button {
+    padding: 0.45rem 0.9rem;
+    border: 1px solid var(--borde);
+    border-radius: 999px;
+    background: var(--blanco);
+    font: 500 0.85rem var(--sans);
+    cursor: pointer;
+}
+
+.linea-carrito .editar button:hover { border-color: var(--tinta); }
+
+.linea-carrito .editar button[value="eliminar"] { color: var(--error); }
+
+.linea-carrito .editar button[value="eliminar"]:hover { border-color: var(--error); background: #fdecea; }
+
+/* Total y botón de pedido, alineados a la derecha bajo la lista. */
+.resumen {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+}
+
+.resumen .total { margin: 0; color: var(--gris); }
+
+.resumen .total strong {
+    margin-left: 0.5rem;
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--tinta);
+}
+
+.carrito-vacio,
+.confirmacion {
+    padding: 3rem 1.5rem;
+    border: 1px dashed var(--borde);
+    border-radius: var(--radio);
+    background: var(--blanco);
+    text-align: center;
+}
+
+.carrito-vacio p { margin: 0 0 1.25rem; color: var(--gris); }
+
+/* ---------- Historial · RF-14 ---------- */
+
+.lista-pedidos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    background: var(--blanco);
+    overflow: hidden;
+}
+
+.linea-pedido {
+    display: grid;
+    grid-template-columns: 1fr auto auto 6.5rem 9rem;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1rem 1.5rem;
+}
+
+.linea-pedido + .linea-pedido { border-top: 1px solid var(--borde); }
+
+.linea-pedido .numero { font-family: var(--serif); font-size: 1.2rem; }
+
+.linea-pedido .fecha,
+.linea-pedido .articulos { color: var(--gris); white-space: nowrap; }
+
+.linea-pedido .importe { font-weight: 500; text-align: right; white-space: nowrap; }
+
+/* Etiqueta de estado: naranja si se está preparando, verde si ya salió. */
+.estado {
+    justify-self: end;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    background: var(--naranja-suave);
+    color: var(--naranja-oscuro);
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.estado.enviado { background: #e8f5e9; color: var(--verde); }
+
+/* ---------- Confirmación · RF-11 ---------- */
+
+/* .confirmacion también lleva .contenido: se estrecha y se centra. */
+.contenido.confirmacion { max-width: 640px; margin-top: 3rem; }
+
+.confirmacion h1 { margin-bottom: 0.75rem; }
+
+.confirmacion p:not(.antetitulo) { margin: 0 0 2rem; color: var(--gris); }
+
 /* =====================================================
    Móvil
    ===================================================== */
@@ -475,4 +638,31 @@ img { max-width: 100%; display: block; }
     .producto .foto, .producto .sin-foto { width: 100px; height: 100px; font-size: 2rem; }
 
     .producto .datos { padding: 0.9rem 1rem; }
+
+    .producto form button { padding: 0.5rem 0.9rem; font-size: 0.9rem; }
+
+    /* Carrito en móvil: nombre y subtotal arriba, el resto debajo. */
+    .linea-carrito {
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "nombre   subtotal"
+            "unidades unidades"
+            "editar   editar";
+        gap: 0.3rem 1rem;
+        padding: 1rem;
+    }
+    .linea-carrito .nombre   { grid-area: nombre; }
+    .linea-carrito .subtotal { grid-area: subtotal; }
+    .linea-carrito .unidades { grid-area: unidades; font-size: 0.9rem; }
+    .linea-carrito .editar   { grid-area: editar; margin-top: 0.4rem; }
+
+    .linea-pedido {
+        grid-template-columns: 1fr auto;
+        gap: 0.2rem 1rem;
+        padding: 1rem;
+    }
+    .linea-pedido .articulos { display: none; }
+
+    .resumen { flex-direction: column; align-items: stretch; text-align: right; }
+    .resumen .boton { width: 100%; }
 }

@@ -24,6 +24,7 @@
         <a class="marca" href="categorias.php">Arrivederci</a>
         <nav>
             <a href="categorias.php">Volver a categorías</a>
+            <a href="carrito.php">Ver carrito</a>
             <a href="logout.php">Cerrar sesión</a>
         </nav>
     </header>
